@@ -1,29 +1,24 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Character.h"
 #include "AbilitySystemInterface.h"
-#include "CharacterBase.generated.h"
+#include "GameFramework/PlayerState.h"
+#include "PhlegethonPlayerState.generated.h"
 
-class UAbilitySystemComponent;
 class UAttributeSet;
+class UAbilitySystemComponent;
 
-UCLASS(Abstract)
-class PHLEGETHON_API ACharacterBase : public ACharacter, public IAbilitySystemInterface
+UCLASS()
+class PHLEGETHON_API APhlegethonPlayerState : public APlayerState, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
 public:
-	ACharacterBase();
+	APhlegethonPlayerState();
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
 
 protected:
-	virtual void BeginPlay() override;
-
-	UPROPERTY(EditAnywhere, Category = "Combat")
-	TObjectPtr<USkeletalMeshComponent> Weapon;
-
 	UPROPERTY()
 	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
 

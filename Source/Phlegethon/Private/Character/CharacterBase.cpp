@@ -1,6 +1,3 @@
-
-
-
 #include "Character/CharacterBase.h"
 
 ACharacterBase::ACharacterBase()
@@ -12,10 +9,12 @@ ACharacterBase::ACharacterBase()
 	Weapon->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
 
+UAbilitySystemComponent* ACharacterBase::GetAbilitySystemComponent() const
+{
+	return AbilitySystemComponent;
+}
+
 void ACharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
-
-
