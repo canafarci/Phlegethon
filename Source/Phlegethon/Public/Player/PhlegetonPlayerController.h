@@ -6,6 +6,7 @@
 
 class UInputMappingContext;
 class UInputAction;
+class IHighlightableActor;
 struct FInputActionValue;
 
 /**
@@ -18,12 +19,16 @@ class PHLEGETHON_API APhlegetonPlayerController : public APlayerController
 
 public:
 	APhlegetonPlayerController();
+	virtual void PlayerTick(float DeltaTime) override;
 
 protected:
 	virtual void BeginPlay() override;
 	virtual void SetupInputComponent() override;
 
 private:
+	IHighlightableActor* LastActor;
+	IHighlightableActor* ThisActor;
+
 	UPROPERTY(EditAnywhere, Category= "Input")
 	TObjectPtr<UInputMappingContext> PhlegetonContext;
 
@@ -31,4 +36,5 @@ private:
 	TObjectPtr<UInputAction> MoveAction;
 
 	void Move(const FInputActionValue& InputActionValue);
+	void TraceCursor();
 };
