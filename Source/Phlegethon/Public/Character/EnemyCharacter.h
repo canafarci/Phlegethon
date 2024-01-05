@@ -15,8 +15,14 @@ class PHLEGETHON_API AEnemyCharacter : public ACharacterBase, public IHighlighta
 
 public:
 	AEnemyCharacter();
+
+	//~ Start Highlightable Actor Interface
 	virtual void HighlightActor() override;
 	virtual void UnHighlightActor() override;
+	//~ End Highlightable Actor Interface
+
+protected:
+	virtual void BeginPlay() override;
 
 private:
 	UPROPERTY()

@@ -15,7 +15,9 @@ class PHLEGETHON_API APhlegethonPlayerState : public APlayerState, public IAbili
 
 public:
 	APhlegethonPlayerState();
+	//~ Start IAbilitySystemInterface
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+	//~ End IAbilitySystemInterface
 	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
 
 protected:

@@ -8,6 +8,7 @@ APhlegethonPlayerState::APhlegethonPlayerState()
 
 	AbilitySystemComponent = CreateDefaultSubobject<UPhlegethonAbilitySystemComponent>("AbilitySystemComponent");
 	AbilitySystemComponent->SetIsReplicated(true);
+	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed);
 
 	AttributeSet = CreateDefaultSubobject<UPhlegethonAttributeSet>("AttributeSet");
 }

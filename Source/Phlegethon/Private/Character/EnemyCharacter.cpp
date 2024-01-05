@@ -12,8 +12,16 @@ AEnemyCharacter::AEnemyCharacter()
 
 	AbilitySystemComponent = CreateDefaultSubobject<UPhlegethonAbilitySystemComponent>("AbilitySystemComponent");
 	AbilitySystemComponent->SetIsReplicated(true);
+	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
 
 	AttributeSet = CreateDefaultSubobject<UPhlegethonAttributeSet>("AttributeSet");
+}
+
+void AEnemyCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	check(AbilitySystemComponent);
+	AbilitySystemComponent->InitAbilityActorInfo(this, this);
 }
 
 void AEnemyCharacter::HighlightActor()
