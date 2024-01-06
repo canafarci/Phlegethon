@@ -31,9 +31,9 @@ void APlayerCharacter::OnRep_PlayerState()
 
 void APlayerCharacter::InitAbilityActorInfo()
 {
-	APhlegethonPlayerState* PlayerState = GetPlayerState<APhlegethonPlayerState>();
-	check(PlayerState);
-	AbilitySystemComponent = PlayerState->GetAbilitySystemComponent();
-	AbilitySystemComponent->InitAbilityActorInfo(PlayerState, this);
-	AttributeSet = PlayerState->GetAttributeSet();
+	APhlegethonPlayerState* PhlegethonPlayerState = GetPlayerState<APhlegethonPlayerState>();
+	check(PhlegethonPlayerState);
+	AbilitySystemComponent = PhlegethonPlayerState->GetAbilitySystemComponent();
+	AbilitySystemComponent->InitAbilityActorInfo(PhlegethonPlayerState, this);
+	AttributeSet = PhlegethonPlayerState->GetAttributeSet();
 }
