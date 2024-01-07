@@ -23,8 +23,11 @@ void APhlegetonPlayerController::BeginPlay()
 	//Set up enhanced input subsystem
 	UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(
 		 GetLocalPlayer());
-	check(Subsystem);
-	Subsystem->AddMappingContext(PhlegetonContext, 0);
+
+	if (Subsystem)
+	{
+		Subsystem->AddMappingContext(PhlegetonContext, 0);
+	}
 
 	//Set up mouse cursor options
 	bShowMouseCursor = true;

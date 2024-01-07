@@ -2,6 +2,8 @@
 #include "AbilitySystemComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Player/PhlegethonPlayerState.h"
+#include "Player/PhlegetonPlayerController.h"
+#include "UI/HUD/PhlegethonHUD.h"
 
 APlayerCharacter::APlayerCharacter()
 {
@@ -36,4 +38,13 @@ void APlayerCharacter::InitAbilityActorInfo()
 	AbilitySystemComponent = PhlegethonPlayerState->GetAbilitySystemComponent();
 	AbilitySystemComponent->InitAbilityActorInfo(PhlegethonPlayerState, this);
 	AttributeSet = PhlegethonPlayerState->GetAttributeSet();
+
+	if (APhlegetonPlayerController* PhlegethonPlayerController = Cast<APhlegetonPlayerController>(GetController()))
+	{
+		if (APhlegethonHUD* PhlegethonHUD = Cast<APhlegethonHUD>(PhlegethonPlayerController->GetHUD()))
+		{
+			PhlegethonHUD->InitOverlay(PhlegethonPlayerController, PhlegethonPlayerState,
+			                           AbilitySystemComponent, AttributeSet);
+		}
+	}
 }

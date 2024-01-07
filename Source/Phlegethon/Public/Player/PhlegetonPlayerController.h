@@ -26,8 +26,8 @@ protected:
 	virtual void SetupInputComponent() override;
 
 private:
-	IHighlightableActor* LastActor;
-	IHighlightableActor* ThisActor;
+	TObjectPtr<IHighlightableActor> LastActor;
+	TObjectPtr<IHighlightableActor> ThisActor;
 
 	UPROPERTY(EditAnywhere, Category= "Input")
 	TObjectPtr<UInputMappingContext> PhlegetonContext;
