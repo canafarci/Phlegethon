@@ -3,10 +3,10 @@
 
 UPhlegethonAttributeSet::UPhlegethonAttributeSet()
 {
-	InitHealth(100.f);
+	InitHealth(25.f);
 	InitMaxHealth(100.f);
 	InitMaxMana(100.f);
-	InitMana(100.f);
+	InitMana(80.f);
 }
 
 void UPhlegethonAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const

@@ -41,7 +41,9 @@ void APhlegethonEffectActor::OnOverlap(UPrimitiveComponent* OverlappedComponent,
 
 		UPhlegethonAttributeSet* MutablePhlegethonAttributeSet = const_cast<UPhlegethonAttributeSet*>(
 			PhlegethonAttributeSet);
+
 		MutablePhlegethonAttributeSet->SetHealth(PhlegethonAttributeSet->GetHealth() + 25.f);
+		MutablePhlegethonAttributeSet->SetMana(PhlegethonAttributeSet->GetMana() - 25.f);
 		Destroy();
 	}
 }
