@@ -7,3 +7,11 @@ void UPhlegethonWidgetController::SetWidgetControllerParams(const FWidgetControl
 	AbilitySystemComponent = WidgetControllerParams.AbilitySystemComponent;
 	AttributeSet = WidgetControllerParams.AttributeSet;
 }
+
+void UPhlegethonWidgetController::BroadcastInitialValues()
+{
+}
+
+void UPhlegethonWidgetController::BindCallbacksToDependencies()
+{
+}
