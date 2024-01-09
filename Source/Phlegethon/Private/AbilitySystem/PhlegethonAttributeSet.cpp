@@ -19,6 +19,30 @@ void UPhlegethonAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimePropert
 	DOREPLIFETIME_CONDITION_NOTIFY(UPhlegethonAttributeSet, MaxMana, COND_None, REPNOTIFY_Always);
 }
 
+void UPhlegethonAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue)
+{
+	Super::PreAttributeChange(Attribute, NewValue);
+
+	if (Attribute == GetHealthAttribute())
+	{
+		NewValue = FMath::Clamp(NewValue, 0.f, GetMaxHealth());
+		//UE_LOG(LogTemp, Warning, TEXT("Health: %f"), NewValue);
+	}
+	else if (Attribute == GetMaxHealthAttribute())
+	{
+		//UE_LOG(LogTemp, Warning, TEXT("MaxHealth: %f"), NewValue);
+	}
+	else if (Attribute == GetManaAttribute())
+	{
+		NewValue = FMath::Clamp(NewValue, 0.f, GetMaxMana());
+		//UE_LOG(LogTemp, Warning, TEXT("Mana: %f"), NewValue);
+	}
+	else if (Attribute == GetMaxManaAttribute())
+	{
+		//UE_LOG(LogTemp, Warning, TEXT("MaxMana: %f"), NewValue);
+	}
+}
+
 void UPhlegethonAttributeSet::OnRep_Health(const FGameplayAttributeData& OldHealth) const
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UPhlegethonAttributeSet, Health, OldHealth);
